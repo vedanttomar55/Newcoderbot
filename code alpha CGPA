@@ -1,0 +1,25 @@
+#include <iostream>
+#include <vector>
+#include <iomanip>
+using namespace std;
+int main(){
+ int n; cout<<"Enter number of courses: "; cin>>n;
+ vector<string> grade(n); vector<int> credit(n),gp(n);
+ double totalCredits=0,totalPoints=0;
+ for(int i=0;i<n;i++){
+   cout<<"Course "<<i+1<<" Grade(A,B,C,D,F): ";cin>>grade[i];
+   cout<<"Credit Hours: ";cin>>credit[i];
+   if(grade[i]=="A") gp[i]=10;
+   else if(grade[i]=="B") gp[i]=8;
+   else if(grade[i]=="C") gp[i]=6;
+   else if(grade[i]=="D") gp[i]=4;
+   else gp[i]=0;
+   totalCredits+=credit[i];
+   totalPoints+=gp[i]*credit[i];
+ }
+ cout<<"\nCourse\tGrade\tCredits\n";
+ for(int i=0;i<n;i++) cout<<i+1<<"\t"<<grade[i]<<"\t"<<credit[i]<<"\n";
+ cout<<fixed<<setprecision(2);
+ cout<<"CGPA: "<<totalPoints/totalCredits<<endl;
+ return 0;
+}
